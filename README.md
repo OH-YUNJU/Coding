@@ -11,7 +11,5 @@
 <div align="center">
 	<img src="https://github-readme-stats.vercel.app/api?username=OH-YUNJU&show_icons=true">
 </div>
-
-<center>
-	[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=bibi0218)](https://solved.ac/bibi0218)
-</center>
+<p align="center"
+[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=bibi0218)](https://solved.ac/bibi0218)
