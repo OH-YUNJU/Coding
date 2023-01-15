@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(void) {
+    int arr[9];
+    int max;
+    int tmp = 0;
+
+    for(int i = 0; i < 9; i++) 
+        scanf("%d", &arr[i]);
+
+    max = arr[0];
+
+    for(int j = 0; j < 9; j++) {
+        if(max < arr[j]) {
+            max = arr[j];
+            tmp = j;
+        }
+    }
+    printf("%d\n%d", max, tmp + 1);
+
+    return 0;
+}
