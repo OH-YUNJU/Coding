@@ -10,7 +10,7 @@
 <br>
 <div align="center">
 	<img src="https://github-readme-stats.vercel.app/api?username=OH-YUNJU&show_icons=true">
-	<br>
-	[![Solved.ac Profile](http://mazassumnida.wtf/api/generate_badge?boj=bibi0218)](https://solved.ac/bibi0218)
+</div>
+<div align="center">
 	[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=bibi0218)](https://solved.ac/bibi0218)
 </div>
