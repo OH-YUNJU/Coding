@@ -1,41 +1,42 @@
-import sys
-sys.setrecursionlimit(10**5)
+from collections import deque
 
-dx = [-1, 1, 0, 0]
+n = int(input())
+area = [list(map(int, input().split())) for _ in range(n)]
+
+dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
+queue = deque()
+maxnum = 0
+cnt = 0
+result = 0
 
-def init(N):
-    rain = [[False] * N for _ in range(N)]
-    return rain
-
-def dfs(x,y,z):
-    rain[x][y] = True
-
+for i in range(n):
+  for j in range(n):
+    if(area[i][j] > maxnum):
+      maxnum = area[i][j]
+    
+def bfs(x, y, visited, maxnum):
+  queue.append([x, y])
+  while queue:
+    x, y = queue.popleft()
     for i in range(4):
-        X = x + dx[i]
-        Y = y + dy[i]
+      nx = x + dx[i]
+      ny = y + dy[i]
+      if(0 <= nx < n and 0 <= ny < n):
+        if(visited[nx][ny] == 0 and area[nx][ny] > maxnum):
+          visited[nx][ny] = 1
+          queue.append([nx, ny])
 
-        if X < 0 or X >= N or Y < 0 or Y >= N:
-            continue
+for i in range(maxnum):
+  visited = [[0] * n for _ in range(n)]
+  cnt = 0
+  for j in range(n):
+    for k in range(n):
+      if(area[j][k] > i and visited[j][k] == 0):
+        bfs(j, k, visited, i)
+        cnt += 1
+  if result < cnt:
+    result = cnt
 
-        if not rain[X][Y] and bored[X][Y] > z:
-                dfs(X, Y, z)
-
-
-if __name__ == "__main__":
-    result = 0
-    N = int(input())
-    #rain = init(N)
-    bored = [list(map(int, input().split())) for _ in range(N)]
-
-    for i in range(max(max(bored))):
-        count = 0
-        rain = init(N)
-        for j in range(N):
-            for k in range(N):
-                if not rain[j][k] and bored[j][k] > i:
-                    dfs(j, k, i)
-                    count = count + 1          
-        result = max(result, count)
-
-    print(result)
+print(result)
+    
