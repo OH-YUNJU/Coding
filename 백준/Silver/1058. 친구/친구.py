@@ -1,40 +1,25 @@
-import sys
- 
-n=int(sys.stdin.readline())
-dic = {}
+# 그래프로 될거같지만 플로이드워셜을 배웟으니 그걸로
+# 시간복잡도 n^3
+# 
+n = int(input())
+friend = []
+
 for i in range(n):
-    f_list = sys.stdin.readline()
-    f_idx = [j for j in range(n) if f_list[j]=='Y']
-    for f in f_idx:
-        
-        if i in dic:
-            temp = dic[i]
-            temp.add(f)
-        else :
-            temp = set()
-            temp.add(f)
-        dic[i]=temp
-        if f in dic:
-            temp = dic[f]
-            temp.add(i)
-        else :
-            temp = set()
-            temp.add(i)
-        dic[f]=temp
-        
-        f_set = dic[f]
-        for f2 in f_idx:
-            if f==f2: continue
-            f_set.add(f2)
-            if f2 in dic:
-                temp = dic[f2]
-                temp.add(f)
-            else :
-                temp = set()
-                temp.add(f)
-            dic[f2] = temp
-ans = 0
-for v in dic.values():
-    if len(v)>ans:
-        ans = len(v)
-print(ans)
+    friend.append(list(input()))
+
+def floyd(n):
+    connectlist = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                if(j == k):
+                    continue
+                if(friend[j][k] == 'Y' or (friend[i][k] == 'Y' and friend[j][i] == 'Y')):
+                    connectlist[j][k] = 1
+    ans = 0
+    for i in connectlist:
+        ans = max(ans, sum(i))
+    
+    return ans
+
+print(floyd(n))
