@@ -6,12 +6,11 @@ def solution(data, ext, val_ext, sort_by):
         "maximum" : 2,
         "remain" : 3
     }
-    for i in data:
-        pos = i[dict[ext]]
+    
+    for x in data:
+        if(x[dict[ext]] < val_ext):
+            answer.append(x)
         
-        if(pos < val_ext):
-            answer.append(i)
-            
-    answer.sort(key=lambda a:a[dict[sort_by]])
+    answer.sort(key=lambda x:x[dict[sort_by]])
     
     return answer
