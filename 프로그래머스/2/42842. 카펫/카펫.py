@@ -1,14 +1,16 @@
 def solution(brown, yellow):
     answer = []
     
-    tmp = (brown - 4) / 2
-    
     for i in range(1, yellow+1):
-        if(i + (yellow/i) == tmp):
-            answer.append(i+2)
-            answer.append(yellow/i+2)
-            break
+        if(yellow % i == 0):
+            if(((yellow/i)+2) * (i+2) == yellow+brown):
+                answer.append(((yellow/i)+2))
+                answer.append((i+2))
+                break
     
-    answer.sort(reverse=True)
-    
+    if(answer[0] < answer[1]):
+        tmp = answer[0]
+        answer[0] = answer[1]
+        answer[1] = tmp
+
     return answer
